@@ -1,0 +1,120 @@
+$laptop: 1000px;
+$tablet: 720px;
+$mobile: 600px;
+
+@mixin laptop {
+  @media screen and (max-width: #{$laptop}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: #{$mobile}) {
+    @content;
+  }
+}
+
+header {
+  background-image: linear-gradient(
+      rgba(16, 29, 44, 0.5),
+      rgba(16, 29, 44, 0.5)
+    ),
+    url(../img/bg1.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  position: relative;
+
+  @include laptop {
+    height: 80vh;
+  }
+
+  .nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 5rem;
+    position: relative;
+
+    @include tablet {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo img {
+      width: 12rem;
+      @include tablet {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    .navList ul {
+      display: flex;
+      justify-content: end;
+      margin-left: 2rem;
+      list-style: none;
+      position: relative;
+
+      @include tablet {
+        display: none;
+      }
+
+      li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 2rem;
+        margin-right: 4rem;
+      }
+    }
+  }
+
+  .headerText {
+    padding: 5rem;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 80px;
+    @include laptop {
+      line-height: 70px;
+    }
+    @include mobile {
+      line-height: 50px;
+    }
+
+    p {
+      font-size: 3rem;
+      @include laptop {
+        font-size: 2.5rem;
+      }
+      @include mobile {
+        font-size: 2rem;
+      }
+    }
+    h1 {
+      font-size: 8rem;
+      @include laptop {
+        font-size: 6rem;
+      }
+      @include mobile {
+        font-size: 4rem;
+      }
+    }
+    .btn {
+      color: #ffff;
+      padding: 10px 25px;
+      background: transparent;
+      border: 1px solid #fff;
+      border-radius: 20px;
+      outline: none;
+      cursor: pointer;
+    }
+  }
+}
